@@ -16,20 +16,20 @@ This repos is still just a mock and not meant for production, just to ease the d
 
 1. clone this repos
 <!--
-3. on the host, edit the `/etc/hosts` file so it resolves `host.docker.internal` as `localhost`
+2. on the host, edit the `/etc/hosts` file so it resolves `host.docker.internal` as `localhost`
    ```bash
    sudo sh -c 'echo "127.0.0.1 host.docker.internal" >> /etc/hosts'
    ```
-4. create the docker network
+3. create the docker network
    ```bash
    docker network create my_app_network
    ```
 -->
-5. deploy
+2. deploy
    ```bash
    docker compose up -d
    ```
-6. test
+3. test
 
   First run in the terminal
    ```bash
