@@ -6,6 +6,8 @@ This repos is still just a mock and not meant for production, just to ease the d
 
 ## Change Log
 
+- 2026-08-17: changed the settings to use network_mode: "host". localhost/host.docker.internal was not resolving
+  to the actual host as docker is set up with a different IP range to avoid colliding with the NFS (172.18.xxx.yyy)
 - 2026-08-14: as we are using localhost not to have to open ports on the host, we created a `.env` file,
   modified the docker-compose.yaml to define extra_hosts and create the network as external so it can be
   joined by other compose stacks. We also created two configuration files for REMS and SDA.
@@ -13,19 +15,21 @@ This repos is still just a mock and not meant for production, just to ease the d
 ## Setup
 
 1. clone this repos
-2. on the host, edit the `/etc/hosts` file so it resolves `host.docker.internal` as `localhost`
+<!--
+3. on the host, edit the `/etc/hosts` file so it resolves `host.docker.internal` as `localhost`
    ```bash
    sudo sh -c 'echo "127.0.0.1 host.docker.internal" >> /etc/hosts'
    ```
-3. create the docker network
+4. create the docker network
    ```bash
    docker network create my_app_network
    ```
-4. deploy
+-->
+5. deploy
    ```bash
    docker compose up -d
    ```
-5. test
+6. test
 
   First run in the terminal
    ```bash
@@ -51,5 +55,7 @@ This repos is still just a mock and not meant for production, just to ease the d
   ```
 
 ## TODO
+
+1. Instead on relying on ~~localhost and the host.docker.internal mapping~~ `network_mode: "host"`, we could instead define the networks with static IPs, see that [Stack Overflow example](https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose)
 
 1. Instead on relying on localhost and the host.docker.internal mapping, we could instead define the networks with static IPs, see that [Stack Overflow example](https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose)
