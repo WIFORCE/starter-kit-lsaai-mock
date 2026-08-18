@@ -37,7 +37,7 @@ This repos is still just a mock and not meant for production, just to ease the d
    ```
   should return `"http://pando.upsc.se:8080/oidc/"`
    
-  Then [login into the front-end](http://pando.upsc.se:8080/oidc/authorize?response_type=code&client_id=rems-client&redirect_uri=http://localhost:3000/oidc-callback&scope=openid%20profile%20email%20ga4gh_passport_v1)
+  Then [login into the front-end](http://pando.upsc.se:8080/oidc/authorize?response_type=code&client_id=rems-client&redirect_uri=http://pando.upsc.se:3000/oidc-callback&scope=openid%20profile%20email%20ga4gh_passport_v1)
   
   Click "Consent" and lookup the code in the returned URL (it will throw an error). It will look like: `http://localhost:3000/oidc-callback?code=SOME_CODE`
 
