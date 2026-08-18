@@ -20,25 +20,25 @@ This repos is still just a mock and not meant for production, just to ease the d
    ```bash
    sudo sh -c 'echo "127.0.0.1 host.docker.internal" >> /etc/hosts'
    ```
-3. create the docker network
+-->
+2. create the docker network
    ```bash
    docker network create my_app_network
    ```
--->
-2. deploy
+1. deploy
    ```bash
    docker compose up -d
    ```
-3. test
+1. test
 
   First run in the terminal
    ```bash
-   curl -s http://localhost:8080/oidc/.well-known/openid-configuration | jq .issuer
+   curl -s http://pando.upsc.se:8080/oidc/.well-known/openid-configuration | jq .issuer
    ```
-  should return `"http://host.docker.internal:8080/oidc/"`
+  should return `"http://pando.upsc.se:8080/oidc/"`
    
-  Then [login into the front-end](http://host.docker.internal:8080/oidc/authorize?response_type=code&client_id=rems-client&redirect_uri=http://localhost:3000/oidc-callback&scope=openid%20profile%20email%20ga4gh_passport_v1)
-
+  Then [login into the front-end](http://pando.upsc.se:8080/oidc/authorize?response_type=code&client_id=rems-client&redirect_uri=http://localhost:3000/oidc-callback&scope=openid%20profile%20email%20ga4gh_passport_v1)
+  
   Click "Consent" and lookup the code in the returned URL (it will throw an error). It will look like: `http://localhost:3000/oidc-callback?code=SOME_CODE`
 
   In the terminal, set the code as a variable
