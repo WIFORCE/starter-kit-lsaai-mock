@@ -2,7 +2,7 @@
 
 ## Changes to do
 
-1. use secrets to avoid credentials in clear text: `configuration/aai-mock/application-properties`
+1. use secrets to avoid credentials in clear text, _e.g._ `configuration/aai-mock/application-properties`, more generally in the whole `configuration` directory.
 2. secure the dockerfile
 
 ## Deployment
