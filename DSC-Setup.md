@@ -6,6 +6,12 @@ This repos is still just a mock and not meant for production, just to ease the d
 
 ## Change Log
 
+- 2026-08-18: branched out the previous changes as `network-mode-host`. Reconfigured to use network and host,
+  not localhost or network-mode `host`. Changes includes replacing `localhost` with `pando.upsc.se` (hardcoded) in
+  `.env` and `configuration/aai-mock/clients/rems-client.yaml`. Then reverting to using the service name as the mysql
+  hostname for connecting to the service (letting docker DNS resolve it as they are on the same network) in
+  `configuration/aai-mock/application.properties`. Finally, updated the docker compose to restore the internal network
+  but not the external one. LSAAI exposes the services needed by REMS, so no need for a common network.
 - 2026-08-17: changed the settings to use network_mode: "host". localhost/host.docker.internal was not resolving
   to the actual host as docker is set up with a different IP range to avoid colliding with the NFS (172.18.xxx.yyy)
 - 2026-08-14: as we are using localhost not to have to open ports on the host, we created a `.env` file,
@@ -20,12 +26,12 @@ This repos is still just a mock and not meant for production, just to ease the d
    ```bash
    sudo sh -c 'echo "127.0.0.1 host.docker.internal" >> /etc/hosts'
    ```
--->
 2. create the docker network
    ```bash
    docker network create my_app_network
    ```
-1. deploy
+-->
+2. deploy
    ```bash
    docker compose up -d
    ```
