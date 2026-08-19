@@ -6,6 +6,8 @@ This repos is still just a mock and not meant for production, just to ease the d
 
 ## Change Log
 
+- 2026-08-19: Updated the `configuration/aai-mock/clients/sda-auth-client.yaml` replacing `localhost` with
+  `pando.upsc.se` (hardcoded)
 - 2026-08-18: branched out the previous changes as `network-mode-host`. Reconfigured to use network and host,
   not localhost or network-mode `host`. Changes includes replacing `localhost` with `pando.upsc.se` (hardcoded) in
   `.env` and `configuration/aai-mock/clients/rems-client.yaml`. Then reverting to using the service name as the mysql
