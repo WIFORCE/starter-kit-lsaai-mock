@@ -12,10 +12,10 @@ services:
       - "./configuration/aai-mock:/etc/lsaai-mock"
     ports:
       - '8080:8080'
-    network_mode: "host"
-#    networks:
- #     - lsaaimock
- #     - my-app-network
+#    network_mode: "host"
+    networks:
+      - lsaaimock
+#      - my-app-network
   aai-db:
     image: mysql/mysql-server:latest
     container_name: ls-aai-db
@@ -31,9 +31,9 @@ services:
       - "mysql:/var/lib/mysql"
     ports:
       - '3306:3306'
-    network_mode: "host"
-#    networks:
-#      - lsaaimock
+#    network_mode: "host"
+    networks:
+      - lsaaimock
 #      - my-app-network
 # Uncomment if you need to write visas into the broker - this is the storage for the broker
   #broker-db:
@@ -54,11 +54,11 @@ services:
   #  networks:
   #    - lsaaimock
 
-#networks:
-#  lsaaimock:
- # my-app-network:
- #   name: my-app-network
- #   external: true
+networks:
+  lsaaimock:
+#  my-app-network:
+#    name: my-app-network
+#    external: true
 
 volumes:
   mysql:
